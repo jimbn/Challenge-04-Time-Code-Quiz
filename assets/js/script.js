@@ -25,7 +25,7 @@ timer.innerText = "Countdown";
 const Questions = [
     {
         id:0,
-        q: "Question 1"
+        q: "Question 1",
         a: [{text: "answer1.1", isCorrect: false},
             {text: "answer1.2", isCorrect: false},
             {text: "answer1.3", isCorrect: true},
@@ -34,16 +34,16 @@ const Questions = [
     },
     {
         id:2,
-        q: "Question 2"
+        q: "Question 2",
         a: [{text: "answer2.1", isCorrect: false},
             {text: "answer2.2", isCorrect: false},
-            {text: "answer2.3", isCorrect: true}
+            {text: "answer2.3", isCorrect: true},
             {text: "answer2.4", isCorrect: false},
         ]
     },
     {
         id:3,
-        q: "Question 3"
+        q: "Question 3",
         a: [{text: "answer3.1", isCorrect: false},
             {text: "answer3.2", isCorrect: true},
             {text: "answer3.3", isCorrect: false},
@@ -52,7 +52,7 @@ const Questions = [
     },
     {
         id:4,
-        q: "Question 4"
+        q: "Question 4",
         a: [{text: "answer4.1", isCorrect: false},
             {text: "answer4.2", isCorrect: false},
             {text: "answer4.3", isCorrect: false},
