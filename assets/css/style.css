@@ -18,3 +18,16 @@ header {
 .quiz-panel {
     margin: 10px;
 }
+
+button {
+    background-color: purple;
+    color: white;
+}
+
+button:active, button:hover {
+    background-color: pink;
+}
+
+#quiz-panel {
+    display: none;
+}
