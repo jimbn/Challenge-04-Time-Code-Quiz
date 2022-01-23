@@ -10,7 +10,7 @@ header {
     float: left;
 }
 
-.timer {
+.time-display {
     display: flex;
     float: right;
 }
@@ -28,6 +28,27 @@ button:active, button:hover {
     background-color: pink;
 }
 
-#quiz-panel {
-    display: none;
+.intro-panel.deactivated,
+.quiz-panel, .result-panel{
+    transform: translate (-50%, -50%) scale (0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 03s ease;
+}
+
+.quiz-panel.activeQuiz,
+.result-panel.activeResult {
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    transform: translate (-50%, -50%) scale(1);
+}
+
+
+section .answer-container .answer{
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+section .answer-container .answers.disabled {
+    pointer-events: none;
 }

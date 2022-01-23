@@ -1,10 +1,8 @@
-var score = 0;
-
 
 // Question list
-let questions = [
+var questions = [
     {
-        id: 0, 
+        numb: 1, 
         q: "Question 1",
         o: ["answer1.1",
             "answer1.2",
@@ -15,7 +13,7 @@ let questions = [
         
     },
     {   
-        id: 1,
+        numb: 2,
         q: "Question 2",
         o: ["answer2.1", 
             "answer2.2", 
@@ -25,7 +23,7 @@ let questions = [
         a: "answer2.4"
     },
     {   
-        id: 2,
+        numb: 3,
         q: "Question 3",
         o: ["answer3.1", 
             "answer3.2",          
@@ -35,7 +33,7 @@ let questions = [
         a: "answer3.1"
     },
     {
-        id: 3,
+        numb: 4,
         q: "Question 4",
         o: ["answer4.1", 
             "answer4.2", 
@@ -46,95 +44,110 @@ let questions = [
     },
 ]
 
-function intro () {
-    var intro = document.getElementById("intro");
-    var begin = document.querySelector(".begin-quiz");
+// setting elements
+const introPanel = document.querySelector(".intro-panel");
+const beginBtn = intro.querySelector(".begin-btn");
+const quizPanel = document.querySelector(".quiz-panel");
+const questionContainer = document.querySelector(".question-container");
+const answersContainer = document.querySelector(".answer-container");
+const resultDisplay = document.querySelector(".result-display")
+const resultPanel = document.querySelector(".result-panel")
+const timeDisplay = document.querySelector(".time-display")
+const currentTime = document.querySelector(".current-time")
 
-    begin.addEventListener('click', function() {
-        intro.style.display = "none";
-        quizBegin();
-    });
+// When click begin quiz button.
+beginBtn.onclick = () => {
+    introPanel.classList.add("deactivated"); //hide intro
+    quizPanel.classList.add("activeQuiz"); //display quiz
+    displayQuiz(0); //call showQuestion function
+    startTimer(30); //call startTimer function
+}
+
+let timeValue = 30;
+let questionsCount = 0;
+let questionsNumb = 1;
+let userScore = 0;
+
+function nextQuestion () {
+    if (questionsCount < questions.length-1){
+        questionsCount++;
+        questionsNumb++;
+        displayQuiz(questionsCount);
+    }else{
+        showResult();
+        timeValue = 0;
+    }
+}
+
+// Getting questions and answer choice from array
+function displayQuiz(index){
+
+    // create new span/div tag inside question and answer container and passing values via array index
+    let questionTag = "<span>" + questions[index].numb + ") " + questions[index].q + "</span>";
+    let answersTag = "<div class='answers'><button>" + questions[index].o[0] + "</button></div>"
+    + "<div class='answers'><button>" + questions[index].o[1] + "</button></div>"
+    + "<div class='answers'><button>" + questions[index].o[2] + "</button></div>"
+    + "<div class='answers'><button>" + questions[index].o[3] + "</button></div>";
+
+    questionContainer.innerHTML = questionTag; 
+    answersContainer.innerHTML = answersTag;
+
+    const answers = answersContainer.querySelectorAll(".answers");
+
+    // set onclick to all avilable answers
+    for(i=0; i<answers.length; i++){
+        answers[i].setAttribute("onclick", "answerSelected(this)");
+    }
+    
+}
+
+// When click an answer
+function answerSelected(answer) {
+    let userAnswer = answer.textContent; 
+    let correctAnswer = questions[questionsCount].a;
+    const allAnswers = answersContainer.children.length;
+
+    if(userAnswer === correctAnswer){
+        userScore += 1;
+        // resultDisplay.textContent = "CORRECT!";
+        console.log("Correct Answer!");
+        console.log("You have " + userScore +" correct!");        
+    } else {
+        // resultDisplay.textContent = "INCORRECT!";
+        console.log("Incorrect Answer!");
+        timeValue -= 15;
+    }
+    for (i=0; i< allAnswers; i++) {
+        answersContainer.children[i].classList.add("disabled");
+    }
+    nextQuestion();
 };
 
 
-// Start quiz
-function quizBegin(id) {
- 
-var quizDisplay = document.querySelector("#quiz-panel");
-quizDisplay.style.display = "block";
+function showResult() {
+    quizPanel.classList.remove("activeQuiz"); //remove display quiz
+    resultPanel.classList.add("activeResult");
+    let resultTag = "<div class='result-score'>Your finaly score is " + userScore + "! <span></span></div>";
 
-// Getting question
-const question = document.querySelector("#question");
+    resultPanel.innerHTML = resultTag;
+}
 
-// Setting question text
-question.innerText = questions[id].q;
-
-// Getting anwers
-const answers = document.querySelector(".question-container");
-var ans1 = document.querySelector("#ans1");
-var ans2 = document.querySelector("#ans2");
-var ans3 = document.querySelector("#ans3");
-var ans4 = document.querySelector("#ans4");
-
-
-// Setting possible answer text
-ans1.innerText = questions[id].a[0].text;
-ans2.innerText = questions[id].a[1].text;
-ans3.innerText = questions[id].a[2].text;
-ans4.innerText = questions[id].a[3].text;
-
-// Assigning true or false value to the answers
-ans1.value = questions[id].a[0].isCorrect;
-ans2.value = questions[id].a[1].isCorrect;
-ans3.value = questions[id].a[2].isCorrect;
-ans4.value = questions[id].a[3].isCorrect;
-
-
-var result = document.getElementById("result");
-
-var selected = "";
-
-
-// When selecting answers
-ans1.addEventListener('click', function() {
-    selected = ans1.value;
-    if (selected === "true") {
-        result.innerHTML = "CORRECT!";
-        score++;
-    } else {
-        result.innerHTML = "WRONG!";
+function startTimer () {
+    counter = setInterval(timer, 1000);
+    function timer() {
+        currentTime.textContent = timeValue;
+        timeValue--;
+        if (timeValue < 9){
+            var singleDigit = timeValue.textContent;
+            currentTime.textContent = "0" + singleDigit;
+        }
+        if (timeValue < 0){
+            showResult();
+            currentTime.textContent = "0";
+        }
     }
-})
-ans2.addEventListener('click', function() {
-    selected = ans2.value;
-    if (selected === "true") {
-        result.innerHTML = "CORRECT!";
-        score++;
-    } else {
-        result.innerHTML = "WRONG!";
-    }
-})
-ans3.addEventListener('click', function() {
-    selected = ans3.value;
-    if (selected === "true") {
-        result.innerHTML = "CORRECT!";
-        score++;
-    } else {
-        result.innerHTML = "WRONG!";
-    }
-})
-ans4.addEventListener('click', function() {
-    selected = ans4.value;
-    if (selected === "true") {
-        result.innerHTML = "CORRECT!";
-        score++;
-    } else {
-        result.innerHTML = "WRONG!";
-    }
-})
+}
 
-
-};
 
 
 
@@ -144,5 +157,3 @@ var timer = document.getElementsByClassName("timer");
 // Setting timer
 timer.innerText = "Countdown";
 
-
-intro();

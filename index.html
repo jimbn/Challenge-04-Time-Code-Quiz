@@ -10,35 +10,36 @@
 <body>
     <header>
         <div>
-            <div class=highscore>View Highscores</div>
-            <div class=timer>Time</div>
+            <div class= "highscore">View Highscores</div>
+            <div class= "time-display">Time:<span class="current-time">0</span></div>
         </div>
     </header>
 
-    <section id = intro>
+    <!-- Intro Box with start Quiz button -->
+    <section id = "intro" class = "intro-panel">
         <div class = "intro-title">
             <h1>Coding Challenge Quiz</h1>
         </div>
         <div class = "intro-description">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio quisquam deleniti sed laudantium hic accusamus.</p>
         </div>
-        <div class = begin-quiz><button>Start Quiz</button></div>
+        <div class = "begin-btn"><button>Start Quiz</button></div>
     </section>
-    <section id ="quiz-panel">
+    <!-- Quiz Box -->
+    <section id ="quiz" class = "quiz-panel">
         <div class="question-container" id="question">
         </div>
         <div class="answer-container" id="answers">
-            <button class="answer" id="ans1">
-            </button>
-            <button class="answer" id="ans2">
-            </button>
-            <button class="answer" id="ans3">
-            </button>
-            <button class="answer" id="ans4">
-            </button>
         </div>
-        <div id="result"></div>
+        <div id="result-display"></div>
     </section>
+    <!-- Result Box -->
+    <section id="result" class="result-panel">
+        <div class="score"></div>
+    </section>
+    
+    
+    <script scr="./assets/js/questions.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
