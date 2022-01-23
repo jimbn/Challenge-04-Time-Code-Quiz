@@ -127,9 +127,11 @@ function answerSelected(answer) {
 function showResult() {
     quizPanel.classList.remove("activeQuiz"); //remove display quiz
     resultPanel.classList.add("activeResult");
-    let resultTag = "<div class='result-score'>Your finaly score is " + userScore + "! <span></span></div>";
+    
+    var userScoreDisplay = document.querySelector(".user-score-display");
+    userScoreDisplay.textContent = userScore;
 
-    resultPanel.innerHTML = resultTag;
+    
 }
 
 function startTimer () {
@@ -144,9 +146,11 @@ function startTimer () {
         if (timeValue < 0){
             showResult();
             currentTime.textContent = "0";
+            clearInterval(counter);
         }
     }
 }
+
 
 
 
