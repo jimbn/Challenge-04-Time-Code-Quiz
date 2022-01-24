@@ -50,10 +50,12 @@ const beginBtn = intro.querySelector(".begin-btn");
 const quizPanel = document.querySelector(".quiz-panel");
 const questionContainer = document.querySelector(".question-container");
 const answersContainer = document.querySelector(".answer-container");
-const resultDisplay = document.querySelector(".result-display")
-const resultPanel = document.querySelector(".result-panel")
-const timeDisplay = document.querySelector(".time-display")
-const currentTime = document.querySelector(".current-time")
+const resultDisplay = document.querySelector(".result-display");
+const resultPanel = document.querySelector(".result-panel");
+const timeDisplay = document.querySelector(".time-display");
+const currentTime = document.querySelector(".current-time");
+var highscore = localStorage.getItem("highscore")
+
 
 // When click begin quiz button.
 beginBtn.onclick = () => {
@@ -131,7 +133,6 @@ function showResult() {
     var userScoreDisplay = document.querySelector(".user-score-display");
     userScoreDisplay.textContent = userScore;
 
-    
 }
 
 function startTimer () {
@@ -150,8 +151,16 @@ function startTimer () {
         }
     }
 }
+// setting up highscores
+const numOfHighScores = 10;
+const highScoreString = localStorage.getItem()
+var highScores = "highScores"
 
 
+
+function submitHighscore() {
+
+}
 
 
 
