@@ -144,7 +144,6 @@ function showResult() {
     finalScore.textContent = userScore;
 
     submitBtn.addEventListener("click", function(){saveHighScore()}); 
-    submitBtn.addEventListener("click", function(){highScorePage()});
 }
 
 function startTimer () {
