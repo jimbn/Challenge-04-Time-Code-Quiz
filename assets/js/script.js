@@ -54,8 +54,24 @@ const resultDisplay = document.querySelector(".result-display");
 const resultPanel = document.querySelector(".result-panel");
 const timeDisplay = document.querySelector(".time-display");
 const currentTime = document.querySelector(".current-time");
-var highscore = localStorage.getItem("highscore")
+const userName = document.querySelector("#userName");
+const submitBtn = document.getElementById("submit-btn");
+const finalScore = document.querySelector(".finalScore");
 
+
+
+// setting up highscores
+let timeValue = 30;
+let questionsCount = 0;
+let questionsNumb = 1;
+let userScore = 0;
+
+
+const numOfHighScores = 10;
+
+ // save to local storage
+const highScores = JSON.parse(localStorage.getItem("highScores")) || [] ;
+console.log(highScores);
 
 // When click begin quiz button.
 beginBtn.onclick = () => {
@@ -65,10 +81,6 @@ beginBtn.onclick = () => {
     startTimer(30); //call startTimer function
 }
 
-let timeValue = 30;
-let questionsCount = 0;
-let questionsNumb = 1;
-let userScore = 0;
 
 function nextQuestion () {
     if (questionsCount < questions.length-1){
@@ -129,10 +141,10 @@ function answerSelected(answer) {
 function showResult() {
     quizPanel.classList.remove("activeQuiz"); //remove display quiz
     resultPanel.classList.add("activeResult");
-    
-    var userScoreDisplay = document.querySelector(".user-score-display");
-    userScoreDisplay.textContent = userScore;
+    finalScore.textContent = userScore;
 
+    submitBtn.addEventListener("click", function(){saveHighScore()}); 
+    submitBtn.addEventListener("click", function(){highScorePage()});
 }
 
 function startTimer () {
@@ -140,29 +152,40 @@ function startTimer () {
     function timer() {
         currentTime.textContent = timeValue;
         timeValue--;
-        if (timeValue < 9){
-            var singleDigit = timeValue.textContent;
-            currentTime.textContent = "0" + singleDigit;
+        if (timeValue <= 9){
+            currentTime.textContent = "0" + timeValue;
         }
-        if (timeValue < 0){
+        if (timeValue <= 0){
             showResult();
             currentTime.textContent = "0";
             clearInterval(counter);
         }
     }
 }
-// setting up highscores
-const numOfHighScores = 10;
-const highScoreString = localStorage.getItem()
-var highScores = "highScores"
 
 
 
-function submitHighscore() {
+
+function saveHighScore () {
+
+    var newScore = {score: userScore, initials: userName.value};
+
+    // add to list
+    highScores.push(newScore);
+    // sort the list
+    highScores.sort((a,b) => b.score - a.score);
+    // select new list
+    highScores.splice(numOfHighScores);
+
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+    
+    console.log(highScores)
 
 }
 
+// saveHighScore(newScore,highScores)
 
+// JSON.parse(localStorage)
 
 // Getting time
 var timer = document.getElementsByClassName("timer");
