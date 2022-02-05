@@ -79,7 +79,7 @@ let userScore = 0;
 const numOfHighScores = 10;
 
  // save to local storage
-const highScores = JSON.parse(localStorage.getItem("highScores")) || [] ;
+let highScores = JSON.parse(localStorage.getItem("highScores")) || [] ;
 console.log(highScores);
 
 // When click begin quiz button.
@@ -152,7 +152,6 @@ function showResult() {
     resultPanel.classList.add("activeResult");
     finalScore.textContent = userScore;
 
-    submitBtn.addEventListener("click", function(){saveHighScore()}); 
 }
 
 function startTimer () {
@@ -176,17 +175,19 @@ function saveHighScore () {
 
     var newScore = {score: userScore, initials: userName.value};
 
+    // highScores = localStorage.getItem('highScores');
+    // highScores = JSON.parse(highScores);
+
     // add to list
     highScores.push(newScore);
+    console.log(highScores)
     // sort the list
     highScores.sort((a,b) => b.score - a.score);
+    console.log(highScores)
     // select new list
     highScores.splice(numOfHighScores);
-
-    localStorage.setItem('highScores', JSON.stringify(highScores));
-    
     console.log(highScores)
-
+    localStorage.setItem('highScores', JSON.stringify(highScores));
 }
 
 // Getting time
@@ -195,3 +196,4 @@ var timer = document.getElementsByClassName("timer");
 // Setting timer
 timer.innerText = "Countdown";
 
+submitBtn.addEventListener("click", function(){saveHighScore()}); 
