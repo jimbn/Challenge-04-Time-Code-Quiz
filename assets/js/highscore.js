@@ -9,8 +9,8 @@ highScoreList.innerHTML = highScores
     }) 
     .join("");
 
-// clearScores.addEventListener("click", clear());
+clearScores.addEventListener("click", clear());
 
-// function clear() {
-//     localStorage.clear();
-// }
+function clear() {
+    localStorage.clear();
+}

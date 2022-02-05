@@ -1,9 +1,32 @@
+:root {
+    font-size: 62.5%
+}
+
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 3.5rem;
+}
 
 a {
     text-decoration: none;
 }
+
+h1 {
+    font-size: 5rem;
+}
+
+.result-score {
+    font-size: 3rem;
+}
+
+.result-score h2 {
+    font-size: 4rem;
+}
+
 header {
-    margin: 10px;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
 }
@@ -19,37 +42,48 @@ header {
 }
 
 .quiz-panel {
-    margin: 10px;
+    margin: 1rem;
 }
 
 button, .btn{
-    background-color: purple;
+    padding: 1rem;
+    text-align: center;
+    border: none;
+    border-radius: 1rem;
+    background-color: indigo;
     color: white;
 }
 
 button:active, button:hover, .btn:hover{
-    background-color: pink;
+    background-color: purple;
     cursor: pointer;
 }
 
 .intro-panel.deactivated,
 .quiz-panel, .result-panel{
-    opacity: 0;
+    display: none;
     pointer-events: none;
 }
 
+.intro-panel,
 .quiz-panel.activeQuiz,
-.result-panel.activeResult {
-    opacity: 1;
-    z-index: 5;
+.result-panel.activeResult,
+.highscore-page {
+    display: block;
     pointer-events: auto;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+.answers button {
+    justify-content: left;
+    align-items: left;
 }
 
 
-section .answer-container .answer{
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-section .answer-container .answers.disabled {
-    pointer-events: none;
-}
