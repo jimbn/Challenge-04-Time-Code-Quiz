@@ -1,6 +1,7 @@
 # Challenge-04-Time-Code-Quiz
 
-This project is to create a scheduler for the current day, with the timeframe being from 9AM to 5PM. When opening the scheduler, the title is displayed as well as the current day and date. Scrolling down the user will be presented with time blocks from 9AM to 5PM. The column of each block is the time block, textbox and a save button. Each textbox is color-coded to indicate if the time block is in the past, present or future. When editing the textbox, clicking on the save button will save the added event into local storage.
+This project is to create timed code quiz, with a high score system set to user's local storage. When opening the site, user is prompted with an intro page with 'view high score' and a start button. When clicking on the 'view high score', user is directed to the high score page. When clicked on the start button, user begin the quiz with the first question and the timer is set to 75 seconds. When clicking on the right answer, user will be prompted with 'CORRECT!' if wrong the timer will be deducted by 10 seconds and prompted with 'INCORRECT!'; after clicking on the answer, user will be given the next question. 
+When there are no remaining question or the timer is 0 seconds, then the user will be prompted with the result page. The page will provide the user's score and an input to save their score with their initials. Upon saving the score, the user will be moved to the highscore page and all score saved will be listed in order from highest score to the lowest.
 
 ## Built With
 * HTML
