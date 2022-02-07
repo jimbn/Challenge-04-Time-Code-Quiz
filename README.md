@@ -13,7 +13,7 @@ https://jimbn.github.io/Challenge-04-Time-Code-Quiz/
 ## Screenshot
 ![alt text](assets/screenshot/intro-page.png?raw=true)
 ![alt text](assets/screenshot/q-and-a.png?raw=true)
-![alt text](assets/screenshot/enter-intial.png?raw=true)
+![alt text](assets/screenshot/enter-initial.png?raw=true)
 ![alt text](assets/screenshot/high-score-page.png?raw=true)
 
 ## Contribution
