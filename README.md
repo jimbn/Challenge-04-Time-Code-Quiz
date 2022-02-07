@@ -11,10 +11,10 @@ This project is to create a scheduler for the current day, with the timeframe be
 https://jimbn.github.io/Challenge-04-Time-Code-Quiz/
 
 ## Screenshot
-![alt text](assets/screenshots/intro-page.png?raw=true)
-![alt text](assets/screenshots/q-and-a.png?raw=true)
-![alt text](assets/screenshots/enter-intial.png?raw=true)
-![alt text](assets/screenshots/high-score-page.png?raw=true)
+![alt text](assets/screenshot/intro-page.png?raw=true)
+![alt text](assets/screenshot/q-and-a.png?raw=true)
+![alt text](assets/screenshot/enter-intial.png?raw=true)
+![alt text](assets/screenshot/high-score-page.png?raw=true)
 
 ## Contribution
 Jim Nguyen
